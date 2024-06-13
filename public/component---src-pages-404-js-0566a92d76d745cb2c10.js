@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgatsby_starter_default=self.webpackChunkgatsby_starter_default||[]).push([[883],{429:function(e,t,a){a.r(t);var s=a(7294);const r={display:"block",width:"100vw",height:"100vh",backgroundSize:"cover"};t.default=()=>s.createElement("iframe",{src:"https://cdpn.io/dsenneff/fullpage/mjZgmN?anon=true&view=",style:r})}}]);
+//# sourceMappingURL=component---src-pages-404-js-0566a92d76d745cb2c10.js.map

@@ -1,0 +1,1 @@
+curl "https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=2000"

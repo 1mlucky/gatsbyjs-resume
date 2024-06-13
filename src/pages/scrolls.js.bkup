@@ -1,0 +1,14 @@
+// https://github.com/VitaliiZhukov/react-scroll-slider/blob/master/stories/Basic/Basic/index.js
+import React from "react";
+
+import { Carousel } from "react-scroll-slider";
+ 
+
+const Slider = () => (
+  <Carousel> 
+    <div>a</div>
+    <div>b</div>
+  </Carousel>
+);
+
+export default Slider;

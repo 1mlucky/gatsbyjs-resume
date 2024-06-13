@@ -1,0 +1,42 @@
+
+
+
+
+// import * as React from 'react';
+// import Container from '@mui/material/Container';
+// import Typography from '@mui/material/Typography';
+// import Box from '@mui/material/Box';
+// // import Grid from '@mui/material/Grid'; // Grid version 1
+// import Grid from '@mui/material/Unstable_Grid2'; // Grid version 2
+// import { Item } from '@mui/material'
+// import { StyledEngineProvider } from '@mui/material/styles';
+// // import theme from "./../components/theme"
+
+// export default function Mui() {
+//     return (
+//     <Container maxWidth="sm">
+//         <Box sx={{ my: 4 }}>
+//             <Typography variant="h4" component="h1" gutterBottom>
+//                 Material UI Gatsby example
+//             </Typography>
+
+//             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+//                 <Grid xs={6}>
+//                     <Item>1</Item>
+//                 </Grid>
+//                 <Grid xs={6}>
+//                     <Item>2</Item>
+//                 </Grid>
+//                 <Grid xs={6}>
+//                     <Item>3</Item>
+//                 </Grid>
+//                 <Grid xs={6}>
+//                     <Item>4</Item>
+//                 </Grid>
+//             </Grid>
+       
+
+//         </Box>
+//     </Container>
+//     )
+// }
