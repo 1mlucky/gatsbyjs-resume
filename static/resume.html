@@ -1,517 +1,934 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><style>/* Workaround for 'break-before:avoid' */
-* {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-}
-
-ul, li {
-  margin: 0;
-  padding: 0;
-}
-
-span, q {
-  display: block;
-  margin-top: 2px;
-}
-
-p {
-  margin: 0;
-}
-
-@page {
-  size: A4;
-  margin: 15mm 0 20mm 0;
-}
-@page :first {
-  margin-top: 10mm;
-}
-.github {
-  font-size: 18px;
-}
-
-a {
-  color: inherit;
-  font-weight: inherit;
-  text-decoration: none;
-}
-
-p,
-q {
-  line-height: 1.25em;
-}
-
-li {
-  line-height: 1.35em;
-}
-li:first-child {
-  margin-top: 0;
-}
-
-.content {
-  padding: 0;
-  max-width: 850px;
-  height: auto;
-  margin: 0 auto;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-}
-.content a[href] {
-  text-decoration: underline;
-}
-
-.table {
-  width: 100%;
-  display: table;
-}
-.table .main {
-  display: table-cell;
-  width: 70%;
-  padding-right: 50px;
-}
-.table .side {
-  display: table-cell;
-  width: 30%;
-  padding-left: 50px;
-}
-
-.flex {
-  display: flex;
-  gap: 30px;
-  flex-direction: column;
-}
-@media (min-width: 640px) {
-  .flex {
-    flex-direction: row;
-  }
-}
-.flex .main {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 70%;
-}
-@media (min-width: 640px) {
-  .flex .main {
-    width: 70%;
-  }
-}
-.flex .side {
-  display: flex;
-  flex-basis: 30%;
-  flex-direction: column;
-  border-left: none;
-  padding-left: 0;
-}
-@media (min-width: 640px) {
-  .flex .side {
-    border-left: 1px solid #ddd;
-    padding-left: 12px;
-    width: 30%;
-  }
-}
-
-.summary {
-  font-size: 14px;
-}
-.summary:empty {
-  display: none;
-}
-
-.section-title {
-  font-size: 18px;
-  font-weight: normal;
-  margin: 0 0 20px 0;
-}
-
-.margin-container-2:not(:first-child) {
-  margin-top: 20px;
-}
-
-.margin-container-3:not(:first-child) {
-  margin-top: 30px;
-}
-
-.margin-container-4:not(:first-child) {
-  margin-top: 50px;
-}
-
-.padding-container-2 {
-  padding: 20px 0;
-}
-
-.padding-container-3 {
-  padding: 30px 0;
-}
-
-.margin-text-1 {
-  margin-top: 2px;
-}
-.margin-text-1:empty {
-  display: none;
-}
-
-.margin-text-2 {
-  margin-top: 4px;
-}
-.margin-text-2:empty {
-  display: none;
-}
-
-.margin-text-3 {
-  margin-top: 6px;
-}
-.margin-text-3:empty {
-  display: none;
-}
-
-.margin-text-4 {
-  margin-top: 8px;
-}
-.margin-text-4:empty {
-  display: none;
-}
-
-.margin-text-5 {
-  margin-top: 14px;
-}
-.margin-text-5:empty {
-  display: none;
-}
-
-.no-break {
-  break-inside: avoid;
-}
-
-.no-alone-1 {
-  break-inside: avoid;
-}
-.no-alone-1::after {
-  content: "";
-  display: block;
-  height: 75px;
-  margin-bottom: -75px;
-}
-
-.no-alone-2 {
-  break-inside: avoid;
-}
-.no-alone-2::after {
-  content: "";
-  display: block;
-  height: 150px;
-  margin-bottom: -150px;
-}
-
-.markdown h1 {
-  font-size: 160%;
-  font-weight: bolder;
-}
-.markdown h2 {
-  font-size: 150%;
-  font-weight: bolder;
-}
-.markdown h3 {
-  font-size: 140%;
-  font-weight: bolder;
-}
-.markdown h4 {
-  font-size: 130%;
-  font-weight: bold;
-}
-.markdown h5 {
-  font-size: 120%;
-  font-weight: bold;
-}
-.markdown h6 {
-  font-size: 110%;
-  font-weight: bold;
-}
-.markdown ul, .markdown ol {
-  margin-left: 20px;
-}
-.markdown img {
-  display: block;
-  margin: 20px auto;
-  max-width: 1000px;
-  text-align: center;
-}
-.markdown blockquote {
-  margin: 20px 0;
-  padding: 15px 20px;
-}
-.markdown blockquote p {
-  display: inline;
-}
-.markdown code {
-  font-family: monospace;
-}
-
-.main .highlights {
-  width: auto;
-  display: block;
-  padding: 0 10px;
-  margin-bottom: 0;
-  margin-top: 2px;
-}
-.main .highlights li {
-  font-size: 14px;
-  margin-left: 10px;
-}
-.main .left {
-  display: table-cell;
-}
-.main .left .title {
-  font-size: 18px;
-  font-weight: bold;
-  display: block;
-  line-height: 1.25em;
-}
-.main .left .subtitle {
-  font-size: 14px;
-  font-weight: normal;
-  display: block;
-  line-height: 1.25em;
-}
-.main .right {
-  text-align: right;
-  display: table-cell;
-}
-.main .right .date {
-  font-size: 12px;
-  font-weight: normal;
-  white-space: nowrap;
-}
-
-.basics .main {
-  vertical-align: middle;
-}
-.basics .main .name {
-  font-size: 36px;
-  line-height: 1em;
-  display: block;
-  margin-left: -2.52px;
-}
-.basics .main .label {
-  font-size: 26px;
-  line-height: 1em;
-  font-weight: normal;
-  display: block;
-  margin-left: -1.04px;
-  margin-top: 10px;
-}
-.basics .side {
-  vertical-align: middle;
-  padding-top: 15px;
-}
-.basics .side .contact {
-  list-style-type: none;
-}
-.basics .side .contact li {
-  overflow: auto;
-  font-size: 14px;
-  line-height: 1.6em;
-}
-.basics .side .contact li > * {
-  float: left;
-  margin-right: 3px;
-}
-
-.links ul {
-  list-style: none;
-}
-.links ul li {
-  font-size: 14px;
-}
-
-.education .title {
-  font-size: 14px;
-}
-.education .institution {
-  font-size: 14px;
-  font-weight: normal;
-}
-
-.awards .header .title {
-  font-size: 14px;
-}
-.awards .header .awarder {
-  font-size: 14px;
-  font-weight: normal;
-}
-.awards .summary {
-  font-size: 12px;
-}
-
-.certificates .name {
-  font-size: 14px;
-}
-.certificates .issuer {
-  font-size: 14px;
-  font-weight: normal;
-}
-
-.skills .section-title {
-  margin: 0;
-}
-.skills .container {
-  display: block;
-  columns: 1;
-  column-gap: 20px;
-}
-.skills .container .article {
-  break-inside: avoid-column;
-  min-width: 100%;
-  padding-top: 20px;
-}
-@media (min-width: 640px) {
-  .skills .container .article {
-    min-width: 97.5px;
-  }
-}
-.skills .container .article label {
-  display: block;
-  font-size: 16px;
-  font-weight: bold;
-}
-.skills .container .article span {
-  font-size: 14px;
-  list-style: none;
-}
-
-.languages ul {
-  list-style: none;
-}
-.languages ul li {
-  font-size: 12px;
-}
-
-.interests ul {
-  list-style: none;
-}
-.interests ul li {
-  font-size: 12px;
-}
-
-.references .name {
-  font-size: 14px;
-}
-.references q {
-  font-size: 13px;
-  font-weight: normal;
-  font-style: italic;
-}
-
-.meta span {
-  font-size: 12px;
-  font-weight: normal;
-}</style><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><title>Edward Yung's Resume</title></head><body><div class="content"><div class="basics"><div class="flex"><div class="main"><span class="name">Edward Yung</span><span class="label">Full Stack Software Engineer</span></div><div class="side"><ul class="contact"><li>+852-59513623</li><li><span>✉️</span><a href="mailto:1amlucky@proton.me">1amlucky@proton.me</a></li><li><span>🍵</span><a href="https://gitea.com/1m1ucky">https://gitea.com/1m1ucky</a></li><li><span></span><i class="fa fa-github github"></i><a href="https://github.com/1mlucky">https://github.com/1mlucky</a></li><li><span>📑</span><a href="http://edwardsresume.onrender.com/">http://1amlucky.hopto.org/</a></li></ul></div></div><div class="summary markdown padding-container-3"><p>A full stack engineer, with mathematical research experience and knowledge in domain driven design with Django Python, Nest.js Node.js, Gatsby.js React.js, Java Spring to design test driven high scalable microservices, data pipelines, fostering effective teamwork and communication on system designs and managing the sprint tasks, also know to analyse application vulnerabilities, security incident management and data privacy leak prevention setup.</p>
-</div></div><div class="flex"><div class="main"><div class="work margin-container-4"><p class="section-title no-alone-2">📋 Experience</p>
 
 
   
   
-<div class="container"><div class="article margin-container-3 no-alone-1"><div class="header"><div class="table"><div class="left"><span class="title">
-  Senior Backend Engineer
-</span><span class="subtitle"><a href="https://varadise.ai">Varadise Limited</a> · Kwun Tong, Hong Kong (China)</span></div><div class="right"><span class="date">September 2024 – November 2024</span></div></div></div><div class="summary markdown margin-text-4"><p>
-  An startup of building a contruction management AI software</p>
-</div><ul class="highlights margin-text-4 no-break"><li><span><p><strong>Scope of Works</strong>:</p>
-<ul>
 
-<li>Designed the Nestjs framework basic infrastructure in NX monorepo with multiple NestJs modules and libraries like data repository, logger, etc</li>
-<li>Setup Github Action CI, autodeploy for regression testing pipeline</li>
-<li>Designed the test plan using Jest for microservice e2e testing</li>
-<li>Designed and implemented database structure of Google Drive like web app for government vendor EMSD using golang, AWS s3, postgresql</li>
-</ul>
-</span></li><li><span><p><strong>Technologies</strong>: Golang, NodeJs, PostgreSQL, Git version control, Github actions</p>
-<p></p>
 
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <style>/* Workaround for 'break-before:avoid' */
+         * {
+         margin: 0;
+         padding: 0;
+         border: 0;
+         font-size: 100%;
+         }
+         ul, li {
+         margin: 0;
+         padding: 0;
+         }
+         span, q {
+         display: block;
+         margin-top: 2px;
+         }
+         p {
+         margin: 0;
+         }
+         @page {
+         size: A4;
+         margin: 15mm 0 20mm 0;
+         }
+         @page :first {
+         margin-top: 10mm;
+         }
+         .github {
+         font-size: 18px;
+         }
+         a {
+         color: inherit;
+         font-weight: inherit;
+         text-decoration: none;
+         }
+         p,
+         q {
+         line-height: 1.25em;
+         }
+         li {
+         line-height: 1.35em;
+         }
+         li:first-child {
+         margin-top: 0;
+         }
+         .content {
+         padding: 0;
+         max-width: 850px;
+         height: auto;
+         margin: 0 auto;
+         font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+         }
+         .content a[href] {
+         text-decoration: underline;
+         }
+         .table {
+         width: 100%;
+         display: table;
+         }
+         .table .main {
+         display: table-cell;
+         width: 70%;
+         padding-right: 50px;
+         }
+         .table .side {
+         display: table-cell;
+         width: 30%;
+         padding-left: 50px;
+         }
+         .flex {
+         display: flex;
+         gap: 30px;
+         flex-direction: column;
+         }
+         @media (min-width: 640px) {
+         .flex {
+         flex-direction: row;
+         }
+         }
+         .flex .main {
+         display: flex;
+         flex-direction: column;
+         flex-basis: 70%;
+         }
+         @media (min-width: 640px) {
+         .flex .main {
+         width: 70%;
+         }
+         }
+         .flex .side {
+         display: flex;
+         flex-basis: 30%;
+         flex-direction: column;
+         border-left: none;
+         padding-left: 0;
+         }
+         @media (min-width: 640px) {
+         .flex .side {
+         border-left: 1px solid #ddd;
+         padding-left: 12px;
+         width: 30%;
+         }
+         }
+         .summary {
+         font-size: 14px;
+         }
+         .summary:empty {
+         display: none;
+         }
+         .section-title {
+         font-size: 18px;
+         font-weight: normal;
+         margin: 0 0 20px 0;
+         }
+         .margin-container-2:not(:first-child) {
+         margin-top: 20px;
+         }
+         .margin-container-3:not(:first-child) {
+         margin-top: 30px;
+         }
+         .margin-container-4:not(:first-child) {
+         margin-top: 50px;
+         }
+         .padding-container-2 {
+         padding: 20px 0;
+         }
+         .padding-container-3 {
+         padding: 30px 0;
+         }
+         .margin-text-1 {
+         margin-top: 2px;
+         }
+         .margin-text-1:empty {
+         display: none;
+         }
+         .margin-text-2 {
+         margin-top: 4px;
+         }
+         .margin-text-2:empty {
+         display: none;
+         }
+         .margin-text-3 {
+         margin-top: 6px;
+         }
+         .margin-text-3:empty {
+         display: none;
+         }
+         .margin-text-4 {
+         margin-top: 8px;
+         }
+         .margin-text-4:empty {
+         display: none;
+         }
+         .margin-text-5 {
+         margin-top: 14px;
+         }
+         .margin-text-5:empty {
+         display: none;
+         }
+         .no-break {
+         break-inside: avoid;
+         }
+         .no-alone-1 {
+         break-inside: avoid;
+         }
+         .no-alone-1::after {
+         content: "";
+         display: block;
+         height: 75px;
+         margin-bottom: -75px;
+         }
+         .no-alone-2 {
+         break-inside: avoid;
+         }
+         .no-alone-2::after {
+         content: "";
+         display: block;
+         height: 150px;
+         margin-bottom: -150px;
+         }
+         .markdown h1 {
+         font-size: 160%;
+         font-weight: bolder;
+         }
+         .markdown h2 {
+         font-size: 150%;
+         font-weight: bolder;
+         }
+         .markdown h3 {
+         font-size: 140%;
+         font-weight: bolder;
+         }
+         .markdown h4 {
+         font-size: 130%;
+         font-weight: bold;
+         }
+         .markdown h5 {
+         font-size: 120%;
+         font-weight: bold;
+         }
+         .markdown h6 {
+         font-size: 110%;
+         font-weight: bold;
+         }
+         .markdown ul, .markdown ol {
+         margin-left: 20px;
+         }
+         .markdown img {
+         display: block;
+         margin: 20px auto;
+         max-width: 1000px;
+         text-align: center;
+         }
+         .markdown blockquote {
+         margin: 20px 0;
+         padding: 15px 20px;
+         }
+         .markdown blockquote p {
+         display: inline;
+         }
+         .markdown code {
+         font-family: monospace;
+         }
+         .main .highlights {
+         width: auto;
+         display: block;
+         padding: 0 10px;
+         margin-bottom: 0;
+         margin-top: 2px;
+         }
+         .main .highlights li {
+         font-size: 14px;
+         margin-left: 10px;
+         }
+         .main .left {
+         display: table-cell;
+         }
+         .main .left .title {
+         font-size: 18px;
+         font-weight: bold;
+         display: block;
+         line-height: 1.25em;
+         }
+         .main .left .subtitle {
+         font-size: 14px;
+         font-weight: normal;
+         display: block;
+         line-height: 1.25em;
+         }
+         .main .right {
+         text-align: right;
+         display: table-cell;
+         }
+         .main .right .date {
+         font-size: 12px;
+         font-weight: normal;
+         white-space: nowrap;
+         }
+         .basics .main {
+         vertical-align: middle;
+         }
+         .basics .main .name {
+         font-size: 36px;
+         line-height: 1em;
+         display: block;
+         margin-left: -2.52px;
+         }
+         .basics .main .label {
+         font-size: 26px;
+         line-height: 1em;
+         font-weight: normal;
+         display: block;
+         margin-left: -1.04px;
+         margin-top: 10px;
+         }
+         .basics .side {
+         vertical-align: middle;
+         padding-top: 15px;
+         }
+         .basics .side .contact {
+         list-style-type: none;
+         }
+         .basics .side .contact li {
+         overflow: auto;
+         font-size: 14px;
+         line-height: 1.6em;
+         }
+         .basics .side .contact li > * {
+         float: left;
+         margin-right: 3px;
+         }
+         .links ul {
+         list-style: none;
+         }
+         .links ul li {
+         font-size: 14px;
+         }
+         .education .title {
+         font-size: 14px;
+         }
+         .education .institution {
+         font-size: 14px;
+         font-weight: normal;
+         }
+         .awards .header .title {
+         font-size: 14px;
+         }
+         .awards .header .awarder {
+         font-size: 14px;
+         font-weight: normal;
+         }
+         .awards .summary {
+         font-size: 12px;
+         }
+         .certificates .name {
+         font-size: 14px;
+         }
+         .certificates .issuer {
+         font-size: 14px;
+         font-weight: normal;
+         }
+         .skills .section-title {
+         margin: 0;
+         }
+         .skills .container {
+         display: block;
+         columns: 1;
+         column-gap: 20px;
+         }
+         .skills .container .article {
+         break-inside: avoid-column;
+         min-width: 100%;
+         padding-top: 20px;
+         }
+         @media (min-width: 640px) {
+         .skills .container .article {
+         min-width: 97.5px;
+         }
+         }
+         .skills .container .article label {
+         display: block;
+         font-size: 16px;
+         font-weight: bold;
+         }
+         .skills .container .article span {
+         font-size: 14px;
+         list-style: none;
+         }
+         .languages ul {
+         list-style: none;
+         }
+         .languages ul li {
+         font-size: 12px;
+         }
+         .interests ul {
+         list-style: none;
+         }
+         .interests ul li {
+         font-size: 12px;
+         }
+         .references .name {
+         font-size: 14px;
+         }
+         .references q {
+         font-size: 13px;
+         font-weight: normal;
+         font-style: italic;
+         }
+         .meta span {
+         font-size: 12px;
+         font-weight: normal;
+         }
+      </style>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <title>Edward Yung's Resume</title>
+   </head>
+   <body>
+      <div class="content">
+         <div class="basics">
+            <div class="flex">
+               <div class="main"><span class="name">Edward Yung</span><span class="label">Full Stack Software Engineer</span></div>
+               <div class="side">
+                  <ul class="contact">
+                     <li>+852-59513623</li>
+                     <li><span>✉️</span><a href="mailto:1amlucky@proton.me">1amlucky@proton.me</a></li>
+                     <li><span>🍵</span><a href="https://gitea.com/1m1ucky">https://gitea.com/1m1ucky</a></li>
+                     <li><span></span><i class="fa fa-github github"></i><a href="https://github.com/1mlucky">https://github.com/1mlucky</a></li>
+                     <li><span>📑</span><a href="http://edwardsresume.onrender.com/">http://1amlucky.hopto.org/</a></li>
+                  </ul>
+               </div>
+            </div>
+            <div class="summary markdown padding-container-3">
+               <p>A full stack engineer, with mathematical research experience and knowledge in domain driven design with Django Python, Nest.js Node.js, Gatsby.js React.js, Java Spring to design test driven high scalable microservices, data pipelines, fostering effective teamwork and communication on system designs and managing the sprint tasks, also know to analyse application vulnerabilities, security incident management and data privacy leak prevention setup.</p>
+            </div>
+         </div>
+         <div class="flex">
+            <div class="main">
+               <div class="work margin-container-4">
+                  <p class="section-title no-alone-2">📋 Experience</p>
   
-<div class="container"><div class="article margin-container-3 no-alone-1"><div class="header"><div class="table"><div class="left"><span class="title">Full Stack Engineer</span><span class="subtitle"><a href="https://www.wonderbricks.com/product/digital">Wonderbricks Limited</a> · Causeway Bay, Hong Kong (China)</span></div><div class="right"><span class="date">April 2024 – June 2024</span></div></div></div><div class="summary markdown margin-text-4"><p>An startup of building a contruction AI software using OpenAI voice smart translation, text semantic search, chatgpt chatbot and latest full stack web technologies</p>
-</div><ul class="highlights margin-text-4 no-break"><li><span><p><strong>Scope of Works</strong>:</p>
-<ul>
-<li>Introduced trello sprint task management system.</li>
-<li>Built a modern dashboard of searching text data using OPENAI vector embeddings, PostgreSQL, ReactJs and ReduxJs latest APIs</li>
-<li>Designed the search database structure using domain driven design approcah with well written documentation.</li>
-<li>Enhanced many dashboard components like calendar, selector settings.</li>
-<li>Fixed many bugs of old version of dashboard to aid the display of high amount of real time data in main page.</li>
-</ul>
-</span></li><li><span><p><strong>Technologies</strong>: Python, NodeJs, PostgreSQL, MongoDB, ReactJs, ReduxJs, NextJs, Kysely SQL builder with Prisma ORM, Git version control, langchain OpenAI infrastructure, Github actions, Vercel NextJs deployment</p>
-</span></li><div class="align-on-same-line"><li><div class="left"><div><p><strong>References:</strong></p>
-</div></div><div class="left"><div> </div></div><div class="left"><a href="https://postimg.cc/gallery/TXy7FRj">[Demo Gallery]</a></div><div class="left"><div> </div></div><div class="left"><a href="https://vimeo.com/manage/videos/957571172">[Demo Search Page]</a></div><div class="left"><div> </div></div><div class="left"><a href="https://vimeo.com/manage/videos/957572211">[Demo Main Page]</a></div><div class="left"><div> </div></div></li></div></ul></div>
-
-
-<div class="article margin-container-3 no-alone-1"><div class="header"><div class="table"><div class="left"><span class="title">Software Engineer</span><span class="subtitle"><a href="http://ringbook.io/">RingBook Accounting Software Company</a> · Hong Kong (China)</span></div><div class="right"><span class="date">Dec 2023 – March 2024</span></div></div></div><div class="summary markdown margin-text-4"><p>A startup of building an PaaS of accounting software</p>
-</div><ul class="highlights margin-text-4 no-break"><li><span><p><strong>Scope of Works</strong>:</p>
-<ul>
-<li>Building an accounting software platform using latest fullstack technologies to enable every companies' accountants easily book keeping their accounting notes and calculating summary and reports automatically</li>
-<li>ec2 volume management: disk filesystem formatting and mounting.</li>
-<li>local development server remote ip configuration using ssh proxy.</li>
-<li>ssh full tunneling between servers behind NAT, [remote:port] to [local:port].</li>
-</ul>
-</span></li><li><span><p><strong>Technologies</strong>: ReactJs, NextJs, AWS Amplify, AWS GraphQL, AWS DynamoDB Database single table schema design, Git version controls</p>
-</span></li><div class="align-on-same-line"><li><div class="left"><div><p><strong>References:</strong></p>
-</div></div><div class="left"><div> </div></div><div class="left"><a href="http://edwardsresume.onrender.com/ringbook">[Demo Page]</a></div><div class="left"><div> </div></div><div class="left"><a href="http://app.ringbook.io">[Demo App]: #username: demouser1, #password: 123456</a></div><div class="left"><div> </div></div></li></div></ul></div><div class="article margin-container-3 no-alone-1"><div class="header"><div class="table"><div class="left"><span class="title">System Analyst</span><span class="subtitle"><a href="http://www.infocast.com.hk/">Infocast Limited</a> · Hong Kong (China)</span></div><div class="right"><span class="date">April 2022 – May 2022</span></div></div></div><div class="summary markdown margin-text-4"><p>A leading supplier of financial information technology (FinTech) products and services in Hong Kong.</p>
-</div><ul class="highlights margin-text-4 no-break"><li><span><p><strong>Scope of Works</strong>:</p>
-<ul>
-<li>Maintain common trading account protocols for mulitple banks.</li>
-<li>Maintain the Java report systems for some vendors.</li>
-</ul>
-</span></li><li><span><p><strong>Technologies</strong>: Maven build system, Java Spring, Hibernate ORM, SVN version controls</p>
-</span></li></ul></div><div class="article margin-container-3 no-alone-1"><div class="header"><div class="table"><div class="left"><span class="title">Software Engineer</span><span class="subtitle"><a href="http://www.hk01.com/">HK01 Media</a> · Hong Kong (China)</span></div><div class="right"><span class="date">November 2020 – June 2021</span></div></div></div><div class="summary markdown margin-text-4"><p>A large scale media company consists of many different kinds of platforms, large infrastructure and micro-services serving for 8 million daily users.</p>
-</div><ul class="highlights margin-text-4 no-break"><li><span><p><strong>Scope of Works</strong>:</p>
-<ul>
-<li>Building a wallet SaaS system to enable all HK companies' merchants to have their own payment system in team of 15 engineers and PMs from HK and mainland China.
-<ul>
-<li>Design and maintain system scalable API and swagger documentations.</li>
-<li>Resolve daily technical issues and bugs.</li>
-<li>Analyze business requirements and translate them into system designs.</li>
-<li>Split and assign sprint tasks to engineers and monitoring task progress.</li>
-<li>Maintaining old systems written in raw NodeJs and migrating to the new system written in Nestjs Typescript framework, splitting the old monolithic application into micro-services including OAuth, Authentication service.</li>
-<li>Designed nodejs auto logger framework:
-<ul>
-<li>Use cases: Automatically logging application function call including all types of payloads, error with execution time, performance monitoring.</li>
-</ul>
-</li>
-<li>Design parallel running architecture of two old and new systems, database and partial features migration to strengthen new code base architecture while keeping old features in production to keep system stability.</li>
-</ul>
-</li>
-<li>Self study and researched data team technologies:
-<ul>
-<li>Automatic machine learning pipelines and architectures like GAN, Embeddings, CNN, Maxpool2d, Auto-encoder, Transfer learning, Xgboost, K-means, SGD, SVM, SVD, PCA, etc</li>
-<li>Machine learning production models and data training system.<br>
-User behavior and traffic tracking statistics dashboard:</li>
-<li>Tracking page visits statistics to analyze psychology of the users to let product owner enhance product like payment system usage.</li>
-<li>Behavior prediction system: predict user genders to recommend them different kinds of content to increase users' staying time.</li>
-<li>Automatic machine learning training and model hyper-parameters tuning using Kubeflow to increase model accuracy, model training using Tensorflow, workflow automation and monitoring using airflow to enable administrator to find out daily workflow issues</li>
-</ul>
-</li>
-</ul>
-</span></li><li><span><p><strong>Technologies</strong>: Python Django, Nodejs Nestjs, Pandas, TensorFlow, PyTorch, Docker, K8s, KubeFlows, AWS cloud services</p>
-</span></li></ul></div><div class="article margin-container-3 no-alone-1"><div class="header"><div class="table"><div class="left"><span class="title">Volunteer Technical Consultant, Part Time</span><span class="subtitle"><a href="http://www.viact.ai/">Viact.ai | HKAI Lab</a> · Hong Kong (China)</span></div><div class="right"><span class="date">August 2019 – January 2020</span></div></div></div><div class="summary markdown margin-text-4"><p>A civil construction technologies consultancy.</p>
-</div><ul class="highlights margin-text-4 no-break"><li><span><p><strong>Scope of Works</strong>: AI Video streaming system development, introducing formal SDLC</p>
-</span></li><li><span><p><strong>Technologies</strong>: Jetson Nano, Python YOLOv3, React.js, Express.js, Sequelize PostgreSQL, AWS EC2, Cloudfront</p>
-</span></li></ul></div><div class="article margin-container-3 no-alone-1"><div class="header"><div class="table"><div class="left"><span class="title">Software Engineer</span><span class="subtitle"><a href="http://www.shopline.com/">Shopline | Starling Labs Limited | Alibaba Fund</a> · Hong Kong (China)</span></div><div class="right"><span class="date">February 2019 – July 2019</span></div></div></div><div class="summary markdown margin-text-4"><p>A large scale online shopping mail consisting of over 500k merchants</p>
-</div><ul class="highlights margin-text-4 no-break"><li><span><p><strong>Scope of Works</strong>: Merchant and customer high loading messaging and broadcasting system development using message queues on cloud</p>
-</span></li><li><span><p><strong>Technologies</strong>: React.js, Angular.js, Node.js Express.js, Ruby on Rails, AWS S3, SQS, Cloudwatch, EC2 file buckets, Nginx load balancer, Docker, K8s, Samson CI dashboard for development, staging, production-internal deployments, Semaphore CI, Mongodb, SQL, Redis, Rabbit MQ</p>
-</span></li></ul></div><div class="article margin-container-3 no-alone-1"><div class="header"><div class="table"><div class="left"><span class="title">Software Engineer, Founder</span><span class="subtitle"><a href="http://www.hellotoby.com/zh-hk/pro-listing/silvermind-technology-co-觀塘-1">Silvermind Labs</a> · Hong Kong (China)</span></div><div class="right"><span class="date">July 2017 – January 2019</span></div></div></div><div class="summary markdown margin-text-4"><p>A digital technology consultancy connects latest technologies and applied mathematics to real world applications like mobile and web, hardware, machine learning and data analytic technologies, helping different kinds of industries to process digital transformation and product innovations</p>
-</div><ul class="highlights margin-text-4 no-break"><li><span><p><strong>Scope of Works</strong>: 3D Scanning Android App Development, Smart wear sensor calibration algorithm development; Airport building information system dashboard development; Frontend web app React framework development; Hold meetings with clients, gathering technical requirements; Engaging in software development at the same time</p>
-</span></li><li><span><p><strong>Technologies</strong>: React.js, Node.js, Three.js, Java, Maven, Google Wear SDK, Websocket, WebRTC, Soap</p>
-</span></li><div class="align-on-same-line"><li><div class="left"><div><p><strong>References:</strong></p>
-</div></div><div class="left"><div> </div></div><div class="left"><a href="http://edwardsresume.onrender.com/refs/3d-scanner-algo-designs.pdf">[3D Scanning Algorithm Designs]</a></div><div class="left"><div> </div></div><div class="left"><a href="http://edwardsresume.onrender.com/refs/3d-scanner-demos.gif">[3D Scanning App Demo]</a></div><div class="left"><div> </div></div></li></div></ul></div><div class="article margin-container-3 no-alone-1"><div class="header"><div class="table"><div class="left"><span class="title">Programmer</span><span class="subtitle"><a href="http://hk.linkedin.com/in/appunique-ltd-8a5371aa">AppUnique Limited, Science Park</a> · Hong Kong (China)</span></div><div class="right"><span class="date">October 2016 – June 2017</span></div></div></div><div class="summary markdown margin-text-4"><p>An IoT technology company develops home automation platform and provides related IoT hardware and software solutions</p>
-</div><ul class="highlights margin-text-4 no-break"><li><span><p><strong>Scope of Works</strong>: OAuth2 login module and service backend database design and implementation of the platform; Android App development on some bluetooth controlled devices</p>
-</span></li><li><span><p><strong>Technologies</strong>: React.js, Express.js, Mongodb, Android Java Framework, Gradle, Bluetooth 4.0 protocols</p>
-</span></li><div class="align-on-same-line"><li><div class="left"><div><p><strong>References:</strong></p>
-</div></div><div class="left"><div> </div></div><div class="left"><a href="http://edwardsresume.onrender.com/refs/oauth.pdf">[DB Design Sample]</a></div><div class="left"><div> </div></div><div class="left"><a href="http://tools.ietf.org/html/rfc6749">[OAuth2]</a></div><div class="left"><div> </div></div><div class="left"><a href="http://edwardsresume.onrender.com/refs/app.pdf">[App UI]</a></div><div class="left"><div> </div></div></li></div></ul></div><div class="article margin-container-3 no-alone-1"><div class="header"><div class="table"><div class="left"><span class="title">Research Assistant</span><span class="subtitle"><a href="http://www.cuhk.edu.hk/english/index.html">The Mathematics Department, The Chinese University of Hong Kong</a> · Hong Kong (China)</span></div><div class="right"><span class="date">August 2015 – August 2016</span></div></div></div><div class="summary markdown margin-text-4"></div><ul class="highlights margin-text-4 no-break"><li><span><p><strong>Scope of Works</strong>: worked with several Phds to study journals, literature, hold conferences and develop toolings, machine learning problem in differential geometry and medical imaging problems on brain surface curvatures to Alzheimer diseaseas and image retargeting / resizing problem</p>
-</span></li><li><span><p><strong>Technologies</strong>: Java JNI, C++ Eigen matrix library, Matlab</p>
-</span></li><div class="align-on-same-line"><li><div class="left"><div><p><strong>References:</strong></p>
-</div></div><div class="left"><div> </div></div><div class="left"><a href="http://cuhkintouch.cpr.cuhk.edu.hk/2021/03/4054/">[Intro]</a></div><div class="left"><div> </div></div></li></div></ul></div></div></div></div><div class="side"><div class="skills margin-container-4"><p class="section-title no-alone-1">🔧 Tools</p><div class="container"><div class="article no-break"><label>Backend</label><span class="margin-text-2"><p>Python Django, GraphQL, REST, Cron Task framework, Node.js Nest.js, TypeORM, Mobx.js, Rx.js, Java Spring, K8s, PostgreSQL, Mongodb, Maven, Gradle, Airflow</p></span></div><div class="article no-break"><label>Frontend</label><span class="margin-text-2"><p>React.js, Jsx, Css, Sass, Theme UI, MDX, Android, styled-components, Gatsby.js, GraphQL, Webpack, Gulp</p></span></div><div class="article no-break"><label>General</label><span class="margin-text-2"><p>TensorFlow.js, Apache Flink, Pandas, Python, TypeScript, JavaScript, k8s, Docker, Git, TravisCI, Figma, Visual Studio Code, Android studio</p></span></div></div></div><div class="links margin-container-4 no-break"><p class="section-title no-alone-1">📎 Projects</p><div class="container"><ul><li class="article margin-text-4"><a href="http://gitea.com/1m1ucky/Fast_and_high_loading_trading_data_apache_flink_computation_app"><strong>Fast & high loading trading data apache flink computation app</strong></a></li><li class="article margin-text-4"><a href="http://mtest.malpasonline.co.uk"><strong>Log4j Vulnerabilities Scanner</strong></a></li><li class="article margin-text-4"><a href="http://gitea.com/1m1ucky/Mobile_Phone_3D_Scanner_App"><strong>Mobile Phone 3D Scanner App</strong></a></li><li class="article margin-text-4"><a href="http://gitea.com/1m1ucky/Machine_Learning_Experiments"><strong>Machine Learning Experiments</strong></a></li><li class="article margin-text-4"><a href="http://gitea.com/1m1ucky/Mobile_Phone_Image_Resizer"><strong>Mobile Phone Image Resizer</strong></a></li><li class="article margin-text-4"><a href="http://edwardsresume.onrender.com/course"><strong>Django DDD Lite Course</strong></a></li><li class="article margin-text-4"><a href="http://edwardsresume.onrender.com/quant"><strong>Market Data Analysis</strong></a></li></ul></div></div><div class="certificates margin-container-4"><p class="section-title no-alone-1">📖 Certificates</p><div class="container"><div class="article margin-container-2 no-break"><div class="name markdown"><a href="http://edwardsresume.onrender.com/certs/Coursera.QE55KM3KJDMK.pdf"><p>Modernizing Data Lakes and Data Warehouses with Google Cloud</p>
-</a></div><span class="issuer margin-text-2">Coursea</span></div><div class="article margin-container-2 no-break"><div class="name markdown"><a href="http://edwardsresume.onrender.com/certs/CERTIFICATE_LANDING_PAGE~H6EBU2RRH7LE.jpeg"><p>Building Batch Data Pipelines on Google Cloud</p>
-</a></div><span class="issuer margin-text-2">Coursea</span></div><div class="article margin-container-2 no-break"><div class="name markdown"><a href="http://edwardsresume.onrender.com/certs/Coursera.CE4LL3LFZHLW.pdf"><p>Building Resilient Streaming Analytics Systems on Google Cloud</p>
-</a></div><span class="issuer margin-text-2">Coursea</span></div><div class="article margin-container-2 no-break"><div class="name markdown"><a href="http://edwardsresume.onrender.com/certs/Coursera.FZ57ZJ537GXC.pdf"><p>Spring Framework Specialization</p>
-</a></div><span class="issuer margin-text-2">Coursea</span></div><div class="article margin-container-2 no-break"><div class="name markdown"><a href="http://edwardsresume.onrender.com/certs/Coursera.FZ57ZJ537GXC.pdf"><p>Spring Data Repositories</p>
-</a></div><span class="issuer margin-text-2">Coursea</span></div><div class="article margin-container-2 no-break"><div class="name markdown"><a href="http://edwardsresume.onrender.com/certs/Coursera.3V7GEC8CDP8Y.pdf"><p>Spring - Ecosystem and Core</p>
-</a></div><span class="issuer margin-text-2">Coursea</span></div><div class="article margin-container-2 no-break"><div class="name markdown"><a href="http://edwardsresume.onrender.com/certs/Coursera.KRT7UW6T5NYU.pdf"><p>Spring MVC, Spring Boot and Rest Controllers</p>
-</a></div><span class="issuer margin-text-2">Coursea</span></div><div class="article margin-container-2 no-break"><div class="name markdown"><a href="http://edwardsresume.onrender.com/certs/Coursera.MSYYE84F8Y73.pdf"><p>Spring - Cloud Overview</p>
-</a></div><span class="issuer margin-text-2">Coursea</span></div></div></div><div class="education margin-container-4"><p class="section-title no-alone-1">🎓 Education</p><div class="container"><div class="article margin-container-2 no-break"><div class="title markdown"><p>Bsc, Applied Mathematics</p>
-</div><span class="institution margin-text-2"><a href="http://www.math.cuhk.edu.hk/">The Chinese University of Hong Kong</a><span class="date">September 2012 – September 2015</span></span></div><div class="article margin-container-2 no-break"><div class="title markdown"><p>HKALE, HKCEE</p>
-</div><span class="institution margin-text-2"><a href="http://www.fms.edu.hk/">Fukien Secondary School</a><span class="date">2006 – 2012</span></span></div></div></div><div class="meta margin-container-4 no-break"><span class="last-modified">Updated December 2023</span></div></div></div></div></body></html>
+                 
+                  <div class="container">    
+                     <div class="article margin-container-3 no-alone-1">
+                        <div class="header">
+                           <div class="table">
+                              <div class="left"><span class="title">Senior Backend Engineer</span><span class="subtitle">
+                                <a href="https:///varadise.ai">Varadise Limited</a> · Kwun Tong, Hong Kong (China)</span></div>
+                              <div class="right"><span class="date">September 2024 – November 2024</span></div>
+                           </div>
+                        </div>
+                        <div class="summary markdown margin-text-4">
+                           <p>An startup of building a contruction management AI software</p>
+                        </div>
+                        <ul class="highlights margin-text-4 no-break">
+                           <li>
+                              <span>
+                                 <p><strong>Scope of Works</strong>:</p>
+                                 <ul>
+                                  <li>Designed the Nestjs framework basic infrastructure in NX monorepo with multiple NestJs modules and libraries like data repository, logger, etc</li>
+                                   <li>Setup Github Action CI, autodeploy for regression testing pipeline</li>
+                                   <li>Designed the test plan using Jest for microservice e2e testing</li>
+                                   <li>Designed and implemented database structure of Google Drive like web app for government vendor EMSD using golang, AWS s3, postgresql</li>
+                                 </ul>
+                              </span>
+                           </li>
+                           <li>
+                              <span>
+                                 <p><strong>Technologies</strong>: Golang, NodeJs, PostgreSQL, Git version control, Github actions</p>
+                              </span>
+                           </li>
+                           
+                        </ul>
+                     </div>
+                    
+                     <div class="article margin-container-3 no-alone-1">
+                        <div class="header">
+                           <div class="table">
+                              <div class="left"><span class="title">Full Stack Engineer</span><span class="subtitle"><a href="https://www.wonderbricks.com/product/digital">Wonderbricks Limited</a> · Causeway Bay, Hong Kong (China)</span></div>
+                              <div class="right"><span class="date">April 2024 – June 2024</span></div>
+                           </div>
+                        </div>
+                        <div class="summary markdown margin-text-4">
+                           <p>An startup of building a contruction AI software using OpenAI voice smart translation, text semantic search, chatgpt chatbot and latest full stack web technologies</p>
+                        </div>
+                        <ul class="highlights margin-text-4 no-break">
+                           <li>
+                              <span>
+                                 <p><strong>Scope of Works</strong>:</p>
+                                 <ul>
+                                    <li>Introduced trello sprint task management system.</li>
+                                    <li>Built a modern dashboard of searching text data using OPENAI vector embeddings, PostgreSQL, ReactJs and ReduxJs latest APIs</li>
+                                    <li>Designed the search database structure using domain driven design approcah with well written documentation.</li>
+                                    <li>Enhanced many dashboard components like calendar, selector settings.</li>
+                                    <li>Fixed many bugs of old version of dashboard to aid the display of high amount of real time data in main page.</li>
+                                 </ul>
+                              </span>
+                           </li>
+                           <li>
+                              <span>
+                                 <p><strong>Technologies</strong>: Python, NodeJs, PostgreSQL, MongoDB, ReactJs, ReduxJs, NextJs, Kysely SQL builder with Prisma ORM, Git version control, langchain OpenAI infrastructure, Github actions, Vercel NextJs deployment</p>
+                              </span>
+                           </li>
+                           <div class="align-on-same-line">
+                              <li>
+                                 <div class="left">
+                                    <div>
+                                       <p><strong>References:</strong></p>
+                                    </div>
+                                 </div>
+                                 <div class="left">
+                                    <div> </div>
+                                 </div>
+                                 <div class="left">
+                                    <a href="https://postimg.cc/gallery/TXy7FRj">[Demo Gallery]</a>
+                                 </div>
+                                 <div class="left">
+                                    <div> </div>
+                                 </div>
+                                 <div class="left"><a href="https://vimeo.com/manage/videos/957571172">[Demo Search Page]</a></div>
+                                 <div class="left">
+                                    <div> </div>
+                                 </div>
+                                 <div class="left"><a href="https://vimeo.com/manage/videos/957572211">[Demo Main Page]</a></div>
+                                 <div class="left">
+                                    <div> </div>
+                                 </div>
+                              </li>
+                           </div>
+                        </ul>
+                     </div>
+                     <div class="article margin-container-3 no-alone-1">
+                        <div class="header">
+                           <div class="table">
+                              <div class="left"><span class="title">Software Engineer</span><span class="subtitle"><a href="http://ringbook.io/">RingBook Accounting Software Company</a> · Hong Kong (China)</span></div>
+                              <div class="right"><span class="date">Dec 2023 – March 2024</span></div>
+                           </div>
+                        </div>
+                        <div class="summary markdown margin-text-4">
+                           <p>A startup of building an PaaS of accounting software</p>
+                        </div>
+                        <ul class="highlights margin-text-4 no-break">
+                           <li>
+                              <span>
+                                 <p><strong>Scope of Works</strong>:</p>
+                                 <ul>
+                                    <li>Building an accounting software platform using latest fullstack technologies to enable every companies' accountants easily book keeping their accounting notes and calculating summary and reports automatically</li>
+                                    <li>ec2 volume management: disk filesystem formatting and mounting.</li>
+                                    <li>local development server remote ip configuration using ssh proxy.</li>
+                                    <li>ssh full tunneling between servers behind NAT, [remote:port] to [local:port].</li>
+                                 </ul>
+                              </span>
+                           </li>
+                           <li>
+                              <span>
+                                 <p><strong>Technologies</strong>: ReactJs, NextJs, AWS Amplify, AWS GraphQL, AWS DynamoDB Database single table schema design, Git version controls</p>
+                              </span>
+                           </li>
+                           <div class="align-on-same-line">
+                              <li>
+                                 <div class="left">
+                                    <div>
+                                       <p><strong>References:</strong></p>
+                                    </div>
+                                 </div>
+                                 <div class="left">
+                                    <div> </div>
+                                 </div>
+                                 <div class="left"><a href="http://edwardsresume.onrender.com/ringbook">[Demo Page]</a></div>
+                                 <div class="left">
+                                    <div> </div>
+                                 </div>
+                                 <div class="left"><a href="http://app.ringbook.io">[Demo App]: #username: demouser1, #password: 123456</a></div>
+                                 <div class="left">
+                                    <div> </div>
+                                 </div>
+                              </li>
+                           </div>
+                        </ul>
+                     </div>
+                     <div class="article margin-container-3 no-alone-1">
+                        <div class="header">
+                           <div class="table">
+                              <div class="left"><span class="title">System Analyst</span><span class="subtitle"><a href="http://www.infocast.com.hk/">Infocast Limited</a> · Hong Kong (China)</span></div>
+                              <div class="right"><span class="date">April 2022 – May 2022</span></div>
+                           </div>
+                        </div>
+                        <div class="summary markdown margin-text-4">
+                           <p>A leading supplier of financial information technology (FinTech) products and services in Hong Kong.</p>
+                        </div>
+                        <ul class="highlights margin-text-4 no-break">
+                           <li>
+                              <span>
+                                 <p><strong>Scope of Works</strong>:</p>
+                                 <ul>
+                                    <li>Maintain common trading account protocols for mulitple banks.</li>
+                                    <li>Maintain the Java report systems for some vendors.</li>
+                                 </ul>
+                              </span>
+                           </li>
+                           <li>
+                              <span>
+                                 <p><strong>Technologies</strong>: Maven build system, Java Spring, Hibernate ORM, SVN version controls</p>
+                              </span>
+                           </li>
+                        </ul>
+                     </div>
+                     <div class="article margin-container-3 no-alone-1">
+                        <div class="header">
+                           <div class="table">
+                              <div class="left"><span class="title">Software Engineer</span><span class="subtitle"><a href="http://www.hk01.com/">HK01 Media</a> · Hong Kong (China)</span></div>
+                              <div class="right"><span class="date">November 2020 – June 2021</span></div>
+                           </div>
+                        </div>
+                        <div class="summary markdown margin-text-4">
+                           <p>A large scale media company consists of many different kinds of platforms, large infrastructure and micro-services serving for 8 million daily users.</p>
+                        </div>
+                        <ul class="highlights margin-text-4 no-break">
+                           <li>
+                              <span>
+                                 <p><strong>Scope of Works</strong>:</p>
+                                 <ul>
+                                    <li>
+                                       Building a wallet SaaS system to enable all HK companies' merchants to have their own payment system in team of 15 engineers and PMs from HK and mainland China.
+                                       <ul>
+                                          <li>Design and maintain system scalable API and swagger documentations.</li>
+                                          <li>Resolve daily technical issues and bugs.</li>
+                                          <li>Analyze business requirements and translate them into system designs.</li>
+                                          <li>Split and assign sprint tasks to engineers and monitoring task progress.</li>
+                                          <li>Maintaining old systems written in raw NodeJs and migrating to the new system written in Nestjs Typescript framework, splitting the old monolithic application into micro-services including OAuth, Authentication service.</li>
+                                          <li>
+                                             Designed nodejs auto logger framework:
+                                             <ul>
+                                                <li>Use cases: Automatically logging application function call including all types of payloads, error with execution time, performance monitoring.</li>
+                                             </ul>
+                                          </li>
+                                          <li>Design parallel running architecture of two old and new systems, database and partial features migration to strengthen new code base architecture while keeping old features in production to keep system stability.</li>
+                                       </ul>
+                                    </li>
+                                    <li>
+                                       Self study and researched data team technologies:
+                                       <ul>
+                                          <li>Automatic machine learning pipelines and architectures like GAN, Embeddings, CNN, Maxpool2d, Auto-encoder, Transfer learning, Xgboost, K-means, SGD, SVM, SVD, PCA, etc</li>
+                                          <li>Machine learning production models and data training system.<br>
+                                             User behavior and traffic tracking statistics dashboard:
+                                          </li>
+                                          <li>Tracking page visits statistics to analyze psychology of the users to let product owner enhance product like payment system usage.</li>
+                                          <li>Behavior prediction system: predict user genders to recommend them different kinds of content to increase users' staying time.</li>
+                                          <li>Automatic machine learning training and model hyper-parameters tuning using Kubeflow to increase model accuracy, model training using Tensorflow, workflow automation and monitoring using airflow to enable administrator to find out daily workflow issues</li>
+                                       </ul>
+                                    </li>
+                                 </ul>
+                              </span>
+                           </li>
+                           <li>
+                              <span>
+                                 <p><strong>Technologies</strong>: Python Django, Nodejs Nestjs, Pandas, TensorFlow, PyTorch, Docker, K8s, KubeFlows, AWS cloud services</p>
+                              </span>
+                           </li>
+                        </ul>
+                     </div>
+                     <div class="article margin-container-3 no-alone-1">
+                        <div class="header">
+                           <div class="table">
+                              <div class="left"><span class="title">Volunteer Technical Consultant, Part Time</span><span class="subtitle"><a href="http://www.viact.ai/">Viact.ai | HKAI Lab</a> · Hong Kong (China)</span></div>
+                              <div class="right"><span class="date">August 2019 – January 2020</span></div>
+                           </div>
+                        </div>
+                        <div class="summary markdown margin-text-4">
+                           <p>A civil construction technologies consultancy.</p>
+                        </div>
+                        <ul class="highlights margin-text-4 no-break">
+                           <li>
+                              <span>
+                                 <p><strong>Scope of Works</strong>: AI Video streaming system development, introducing formal SDLC</p>
+                              </span>
+                           </li>
+                           <li>
+                              <span>
+                                 <p><strong>Technologies</strong>: Jetson Nano, Python YOLOv3, React.js, Express.js, Sequelize PostgreSQL, AWS EC2, Cloudfront</p>
+                              </span>
+                           </li>
+                        </ul>
+                     </div>
+                     <div class="article margin-container-3 no-alone-1">
+                        <div class="header">
+                           <div class="table">
+                              <div class="left"><span class="title">Software Engineer</span><span class="subtitle"><a href="http://www.shopline.com/">Shopline | Starling Labs Limited | Alibaba Fund</a> · Hong Kong (China)</span></div>
+                              <div class="right"><span class="date">February 2019 – July 2019</span></div>
+                           </div>
+                        </div>
+                        <div class="summary markdown margin-text-4">
+                           <p>A large scale online shopping mail consisting of over 500k merchants</p>
+                        </div>
+                        <ul class="highlights margin-text-4 no-break">
+                           <li>
+                              <span>
+                                 <p><strong>Scope of Works</strong>: Merchant and customer high loading messaging and broadcasting system development using message queues on cloud</p>
+                              </span>
+                           </li>
+                           <li>
+                              <span>
+                                 <p><strong>Technologies</strong>: React.js, Angular.js, Node.js Express.js, Ruby on Rails, AWS S3, SQS, Cloudwatch, EC2 file buckets, Nginx load balancer, Docker, K8s, Samson CI dashboard for development, staging, production-internal deployments, Semaphore CI, Mongodb, SQL, Redis, Rabbit MQ</p>
+                              </span>
+                           </li>
+                        </ul>
+                     </div>
+                     <div class="article margin-container-3 no-alone-1">
+                        <div class="header">
+                           <div class="table">
+                              <div class="left"><span class="title">Software Engineer, Founder</span><span class="subtitle"><a href="http://www.hellotoby.com/zh-hk/pro-listing/silvermind-technology-co-觀塘-1">Silvermind Labs</a> · Hong Kong (China)</span></div>
+                              <div class="right"><span class="date">July 2017 – January 2019</span></div>
+                           </div>
+                        </div>
+                        <div class="summary markdown margin-text-4">
+                           <p>A digital technology consultancy connects latest technologies and applied mathematics to real world applications like mobile and web, hardware, machine learning and data analytic technologies, helping different kinds of industries to process digital transformation and product innovations</p>
+                        </div>
+                        <ul class="highlights margin-text-4 no-break">
+                           <li>
+                              <span>
+                                 <p><strong>Scope of Works</strong>: 3D Scanning Android App Development, Smart wear sensor calibration algorithm development; Airport building information system dashboard development; Frontend web app React framework development; Hold meetings with clients, gathering technical requirements; Engaging in software development at the same time</p>
+                              </span>
+                           </li>
+                           <li>
+                              <span>
+                                 <p><strong>Technologies</strong>: React.js, Node.js, Three.js, Java, Maven, Google Wear SDK, Websocket, WebRTC, Soap</p>
+                              </span>
+                           </li>
+                           <div class="align-on-same-line">
+                              <li>
+                                 <div class="left">
+                                    <div>
+                                       <p><strong>References:</strong></p>
+                                    </div>
+                                 </div>
+                                 <div class="left">
+                                    <div> </div>
+                                 </div>
+                                 <div class="left"><a href="http://edwardsresume.onrender.com/refs/3d-scanner-algo-designs.pdf">[3D Scanning Algorithm Designs]</a></div>
+                                 <div class="left">
+                                    <div> </div>
+                                 </div>
+                                 <div class="left"><a href="http://edwardsresume.onrender.com/refs/3d-scanner-demos.gif">[3D Scanning App Demo]</a></div>
+                                 <div class="left">
+                                    <div> </div>
+                                 </div>
+                              </li>
+                           </div>
+                        </ul>
+                     </div>
+                     <div class="article margin-container-3 no-alone-1">
+                        <div class="header">
+                           <div class="table">
+                              <div class="left"><span class="title">Programmer</span><span class="subtitle"><a href="http://hk.linkedin.com/in/appunique-ltd-8a5371aa">AppUnique Limited, Science Park</a> · Hong Kong (China)</span></div>
+                              <div class="right"><span class="date">October 2016 – June 2017</span></div>
+                           </div>
+                        </div>
+                        <div class="summary markdown margin-text-4">
+                           <p>An IoT technology company develops home automation platform and provides related IoT hardware and software solutions</p>
+                        </div>
+                        <ul class="highlights margin-text-4 no-break">
+                           <li>
+                              <span>
+                                 <p><strong>Scope of Works</strong>: OAuth2 login module and service backend database design and implementation of the platform; Android App development on some bluetooth controlled devices</p>
+                              </span>
+                           </li>
+                           <li>
+                              <span>
+                                 <p><strong>Technologies</strong>: React.js, Express.js, Mongodb, Android Java Framework, Gradle, Bluetooth 4.0 protocols</p>
+                              </span>
+                           </li>
+                           <div class="align-on-same-line">
+                              <li>
+                                 <div class="left">
+                                    <div>
+                                       <p><strong>References:</strong></p>
+                                    </div>
+                                 </div>
+                                 <div class="left">
+                                    <div> </div>
+                                 </div>
+                                 <div class="left"><a href="http://edwardsresume.onrender.com/refs/oauth.pdf">[DB Design Sample]</a></div>
+                                 <div class="left">
+                                    <div> </div>
+                                 </div>
+                                 <div class="left"><a href="http://tools.ietf.org/html/rfc6749">[OAuth2]</a></div>
+                                 <div class="left">
+                                    <div> </div>
+                                 </div>
+                                 <div class="left"><a href="http://edwardsresume.onrender.com/refs/app.pdf">[App UI]</a></div>
+                                 <div class="left">
+                                    <div> </div>
+                                 </div>
+                              </li>
+                           </div>
+                        </ul>
+                     </div>
+                     <div class="article margin-container-3 no-alone-1">
+                        <div class="header">
+                           <div class="table">
+                              <div class="left"><span class="title">Research Assistant</span><span class="subtitle"><a href="http://www.cuhk.edu.hk/english/index.html">The Mathematics Department, The Chinese University of Hong Kong</a> · Hong Kong (China)</span></div>
+                              <div class="right"><span class="date">August 2015 – August 2016</span></div>
+                           </div>
+                        </div>
+                        <div class="summary markdown margin-text-4"></div>
+                        <ul class="highlights margin-text-4 no-break">
+                           <li>
+                              <span>
+                                 <p><strong>Scope of Works</strong>: worked with several Phds to study journals, literature, hold conferences and develop toolings, machine learning problem in differential geometry and medical imaging problems on brain surface curvatures to Alzheimer diseaseas and image retargeting / resizing problem</p>
+                              </span>
+                           </li>
+                           <li>
+                              <span>
+                                 <p><strong>Technologies</strong>: Java JNI, C++ Eigen matrix library, Matlab</p>
+                              </span>
+                           </li>
+                           <div class="align-on-same-line">
+                              <li>
+                                 <div class="left">
+                                    <div>
+                                       <p><strong>References:</strong></p>
+                                    </div>
+                                 </div>
+                                 <div class="left">
+                                    <div> </div>
+                                 </div>
+                                 <div class="left"><a href="http://cuhkintouch.cpr.cuhk.edu.hk/2021/03/4054/">[Intro]</a></div>
+                                 <div class="left">
+                                    <div> </div>
+                                 </div>
+                              </li>
+                           </div>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="side">
+               <div class="skills margin-container-4">
+                  <p class="section-title no-alone-1">🔧 Tools</p>
+                  <div class="container">
+                     <div class="article no-break">
+                        <label>Backend</label>
+                        <span class="margin-text-2">
+                           <p>Python Django, GraphQL, REST, Cron Task framework, Node.js Nest.js, TypeORM, Mobx.js, Rx.js, Java Spring, K8s, PostgreSQL, Mongodb, Maven, Gradle, Airflow</p>
+                        </span>
+                     </div>
+                     <div class="article no-break">
+                        <label>Frontend</label>
+                        <span class="margin-text-2">
+                           <p>React.js, Jsx, Css, Sass, Theme UI, MDX, Android, styled-components, Gatsby.js, GraphQL, Webpack, Gulp</p>
+                        </span>
+                     </div>
+                     <div class="article no-break">
+                        <label>General</label>
+                        <span class="margin-text-2">
+                           <p>TensorFlow.js, Apache Flink, Pandas, Python, TypeScript, JavaScript, k8s, Docker, Git, TravisCI, Figma, Visual Studio Code, Android studio</p>
+                        </span>
+                     </div>
+                  </div>
+               </div>
+               <div class="links margin-container-4 no-break">
+                  <p class="section-title no-alone-1">📎 Projects</p>
+                  <div class="container">
+                     <ul>
+                        <li class="article margin-text-4"><a href="http://gitea.com/1m1ucky/Fast_and_high_loading_trading_data_apache_flink_computation_app"><strong>Fast & high loading trading data apache flink computation app</strong></a></li>
+                        <li class="article margin-text-4"><a href="http://mtest.malpasonline.co.uk"><strong>Log4j Vulnerabilities Scanner</strong></a></li>
+                        <li class="article margin-text-4"><a href="http://gitea.com/1m1ucky/Mobile_Phone_3D_Scanner_App"><strong>Mobile Phone 3D Scanner App</strong></a></li>
+                        <li class="article margin-text-4"><a href="http://gitea.com/1m1ucky/Machine_Learning_Experiments"><strong>Machine Learning Experiments</strong></a></li>
+                        <li class="article margin-text-4"><a href="http://gitea.com/1m1ucky/Mobile_Phone_Image_Resizer"><strong>Mobile Phone Image Resizer</strong></a></li>
+                        <li class="article margin-text-4"><a href="http://edwardsresume.onrender.com/course"><strong>Django DDD Lite Course</strong></a></li>
+                        <li class="article margin-text-4"><a href="http://edwardsresume.onrender.com/quant"><strong>Market Data Analysis</strong></a></li>
+                     </ul>
+                  </div>
+               </div>
+               <div class="certificates margin-container-4">
+                  <p class="section-title no-alone-1">📖 Certificates</p>
+                  <div class="container">
+                     <div class="article margin-container-2 no-break">
+                        <div class="name markdown">
+                           <a href="http://edwardsresume.onrender.com/certs/Coursera.QE55KM3KJDMK.pdf">
+                              <p>Modernizing Data Lakes and Data Warehouses with Google Cloud</p>
+                           </a>
+                        </div>
+                        <span class="issuer margin-text-2">Coursea</span>
+                     </div>
+                     <div class="article margin-container-2 no-break">
+                        <div class="name markdown">
+                           <a href="http://edwardsresume.onrender.com/certs/CERTIFICATE_LANDING_PAGE~H6EBU2RRH7LE.jpeg">
+                              <p>Building Batch Data Pipelines on Google Cloud</p>
+                           </a>
+                        </div>
+                        <span class="issuer margin-text-2">Coursea</span>
+                     </div>
+                     <div class="article margin-container-2 no-break">
+                        <div class="name markdown">
+                           <a href="http://edwardsresume.onrender.com/certs/Coursera.CE4LL3LFZHLW.pdf">
+                              <p>Building Resilient Streaming Analytics Systems on Google Cloud</p>
+                           </a>
+                        </div>
+                        <span class="issuer margin-text-2">Coursea</span>
+                     </div>
+                     <div class="article margin-container-2 no-break">
+                        <div class="name markdown">
+                           <a href="http://edwardsresume.onrender.com/certs/Coursera.FZ57ZJ537GXC.pdf">
+                              <p>Spring Framework Specialization</p>
+                           </a>
+                        </div>
+                        <span class="issuer margin-text-2">Coursea</span>
+                     </div>
+                     <div class="article margin-container-2 no-break">
+                        <div class="name markdown">
+                           <a href="http://edwardsresume.onrender.com/certs/Coursera.FZ57ZJ537GXC.pdf">
+                              <p>Spring Data Repositories</p>
+                           </a>
+                        </div>
+                        <span class="issuer margin-text-2">Coursea</span>
+                     </div>
+                     <div class="article margin-container-2 no-break">
+                        <div class="name markdown">
+                           <a href="http://edwardsresume.onrender.com/certs/Coursera.3V7GEC8CDP8Y.pdf">
+                              <p>Spring - Ecosystem and Core</p>
+                           </a>
+                        </div>
+                        <span class="issuer margin-text-2">Coursea</span>
+                     </div>
+                     <div class="article margin-container-2 no-break">
+                        <div class="name markdown">
+                           <a href="http://edwardsresume.onrender.com/certs/Coursera.KRT7UW6T5NYU.pdf">
+                              <p>Spring MVC, Spring Boot and Rest Controllers</p>
+                           </a>
+                        </div>
+                        <span class="issuer margin-text-2">Coursea</span>
+                     </div>
+                     <div class="article margin-container-2 no-break">
+                        <div class="name markdown">
+                           <a href="http://edwardsresume.onrender.com/certs/Coursera.MSYYE84F8Y73.pdf">
+                              <p>Spring - Cloud Overview</p>
+                           </a>
+                        </div>
+                        <span class="issuer margin-text-2">Coursea</span>
+                     </div>
+                  </div>
+               </div>
+               <div class="education margin-container-4">
+                  <p class="section-title no-alone-1">🎓 Education</p>
+                  <div class="container">
+                     <div class="article margin-container-2 no-break">
+                        <div class="title markdown">
+                           <p>Bsc, Applied Mathematics</p>
+                        </div>
+                        <span class="institution margin-text-2"><a href="http://www.math.cuhk.edu.hk/">The Chinese University of Hong Kong</a><span class="date">September 2012 – September 2015</span></span>
+                     </div>
+                     <div class="article margin-container-2 no-break">
+                        <div class="title markdown">
+                           <p>HKALE, HKCEE</p>
+                        </div>
+                        <span class="institution margin-text-2"><a href="http://www.fms.edu.hk/">Fukien Secondary School</a><span class="date">2006 – 2012</span></span>
+                     </div>
+                  </div>
+               </div>
+               <div class="meta margin-container-4 no-break"><span class="last-modified">Updated December 2023</span></div>
+            </div>
+         </div>
+      </div>
+   </body>
+</html>
